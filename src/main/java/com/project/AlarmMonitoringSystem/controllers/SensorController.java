@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ public class SensorController {
 	}
 	
 	@GetMapping("/sensors")
+	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 	Collection<Sensor> sensors(){
 		return sensorRepository.findAll();
 	}
@@ -52,6 +54,7 @@ public class SensorController {
 	}
 	
 	@PutMapping("/sensor/{id}")
+	@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 	ResponseEntity<Sensor> updateSensor(@Valid @RequestBody Sensor sensor){
 		Sensor result = sensorRepository.save(sensor);
 		return ResponseEntity.ok().body(result);
