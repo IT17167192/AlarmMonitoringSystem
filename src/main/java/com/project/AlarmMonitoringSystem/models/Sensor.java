@@ -28,4 +28,7 @@ public class Sensor {
 	
 	@ManyToOne
 	User addedBy;
+	
+	@ManyToOne
+	User responsiblePerson;
 }

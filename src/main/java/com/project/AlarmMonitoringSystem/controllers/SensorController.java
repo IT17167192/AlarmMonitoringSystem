@@ -65,4 +65,18 @@ public class SensorController {
 		sensorRepository.deleteById(id);
 		return ResponseEntity.ok().build();
 	}
+	
+	@PostMapping("/sensor/sendAlert")
+	void sendAlert(@Valid @RequestBody Sensor sensor) throws URISyntaxException{
+		System.out.println("=============SENDING SMS=============");
+		System.out.println("ALERT!\nSensor : " + sensor.getId() 
+			+ "\nFloor No : "+ sensor.getFloorNo()
+			+ "\nRoom No " + sensor.getRoomNo() 
+			+ "\nMessage to : " + sensor.getResponsiblePerson().getMobile());
+		System.out.println("=============SENDING EMAIL=============");
+		System.out.println("ALERT!\nSensor : " + sensor.getId() 
+			+ "\nFloor No : "+ sensor.getFloorNo()
+			+ "\nRoom No " + sensor.getRoomNo() 
+			+ "\nMessage to : " + sensor.getResponsiblePerson().getEmail());
+	}
 }
